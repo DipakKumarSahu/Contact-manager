@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{:: #content}, ~{:: title},~{:: script})}">
+
+<head>
+    <title>Error page</title>
+</head>
+
+<body>
+
+
+    <div id="content" class="text-center mt-5  md:w-1/2 mx-auto">
+       <div th:replace="message :: messagebox"  ></div>
+       <button class="bg-gray-900 text-white px-4 py-2 rounded-md mt-4">Login</button>
+    </div>
+    <script>
+        console.log("Error Page")
+    </script>
+    <script>
+        console.log("Ye le ek aur Home ka script tag")
+    </script>
+</body>
+
+</html>

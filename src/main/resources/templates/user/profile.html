@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title},~{::script})}">
+<head>
+    <title th:text="${loggedInUser.name} + '| SCM'">Home page</title>
+</head>
+<body>
+    <div id="content">
+
+        user logged in sidebar
+        <div th:if="${loggedInUser}">
+            <div th:replace="~{user/sidebar :: sidebar}">
+            </div>
+        </div>
+
+        <div class="sm:pl-64 pt-20 " style="height:1000px;">
+            <div class=" flex justify-center flex-col items-center">
+               
+
+                <!-- Profile Card -->
+                <div id="profileCard" class="max-w-md w-full bg-white shadow-xl rounded-2xl p-6 dark:bg-gray-800 dark:text-gray-300 mt-8">
+                    <div class="flex justify-center">
+                        <img onerror="this.src='/images/user.png'" th:src="@{${loggedInUser.profilePic}}"
+                            class="h-16  me-3 sm:h-24 shadow-md rounded-full" alt="Flowbite Logo" />
+                    </div>
+                
+                    <div class="mt-6 text-center">
+                        <h2 id="userName"  th:text="${loggedInUser.name}" class="text-2xl font-bold text-gray-800 dark:text-gray-300">Name</h2>
+                        <p id="userEmail" th:text="${loggedInUser.email}" class="text-sm text-gray-500 dark:text-gray-400">Email</p>
+                        <p id="userPhone" th:text="${loggedInUser.phoneNumber}" class="text-sm text-gray-500 mt-1 dark:text-gray-400">Phone</p>
+                    </div>
+                
+                    <div class="mt-4">
+                        <h3 class="text-md font-semibold text-gray-700 dark:text-gray-500" >About</h3>
+                        <p id="userAbout" class="text-sm text-gray-600 mt-1 dark:text-gray-400" th:text="${loggedInUser.about}">
+                            About user...
+                        </p>
+                    </div>
+                
+                    <!-- <div class="mt-6 grid grid-cols-2 gap-4 text-sm"> -->
+                        <div class="mt-6 flex justify-between text-sm">
+                        <!-- <div class="flex items-center">
+                            <span class="font-medium text-gray-700 w-24 dark:text-gray-500">Role :</span>
+                            <span id="userEnabled" class="ml-auto px-2 py-1 rounded-full dark:text-gray-400" th:text="${loggedInUser.roleList} ">...</span>
+                        </div> -->
+                        <div class="flex items-center">
+                            <span class="font-medium text-gray-700 w-auto dark:text-gray-500">Email Verified:</span>
+                            <span id="emailVerified" class="ml-auto px-2 py-1 rounded-full dark:text-gray-400" th:text="${loggedInUser.emailVerified?'Yes':'No'}">...</span>
+                        </div>
+                        <div class="flex items-center justify-around">
+                            <span class="font-medium text-gray-700 w-auto dark:text-gray-500">Phone Verified:</span>
+                            <span id="phoneVerified" class="ml-auto px-2 py-1 rounded-full dark:text-gray-400 " th:text="${loggedInUser.phoneVerified ? 'Yes' : 'No'}">...</span>
+                        </div>
+                        <!-- <div class="flex items-center">
+                            <span class="font-medium text-gray-700 w-24 dark:text-gray-500">User ID:</span>
+                            <span id="userId" class="ml-auto text-gray-600 dark:text-gray-400" th:text="${loggedInUser.UserId}">...</span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log("Ye le ek aur Home ka script tag")
+    </script>
+</body>
+
+</html>
+
+
+<!-- // put a deactivate button -->
