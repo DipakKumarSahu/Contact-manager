@@ -1,19 +1,63 @@
 <!DOCTYPE html>
-<html 
-lang="en" th:replace="~{base :: parent(~{:: #content}, ~{:: title},~{:: script})}">
-    <head>
-        <title>About page</title>
-    </head>
+<html lang="en" th:replace="~{base :: parent(~{:: #content}, ~{:: title}, ~{:: script})}">
+
+<head>
+    <title>About page</title>
+</head>
 <body>
-<h1>Body hai ye about ka</h1>
-   <div id="content">
-        <h1>Welcome to This About Page</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia assumenda odit similique nesciunt, quidem eos modi nemo, excepturi animi laborum eum provident nostrum.</p>
-   </div>
-   <script>
-    console.log("About Page")
-   </script>
-   
+    <div id="content">
+        <!-- About Hero Section -->
+        <section
+            class="min-h-screen flex items-center justify-center px-6 py-12 bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-black transition-all duration-500">
+            <div
+                class="backdrop-blur-xl bg-white/60 dark:bg-gray-800/60 text-gray-900 dark:text-gray-100 rounded-3xl shadow-2xl p-10 max-w-4xl w-full text-center">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-black dark:text-white">
+                    🧾 Discover Our Story
+                </h1>
+                <p class="text-lg md:text-xl leading-relaxed text-black dark:text-white">
+                    We're not just a contact manager — we're a mission-driven platform created to simplify your digital
+                    life.
+                    Get to know the journey, the team, and the purpose behind what we do.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Details Section -->
+        <section class="px-6 py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">💡 Why We Built This</h2>
+                <p class="text-lg mb-8">
+                    We noticed a need for a smarter, cleaner, and more beautiful way to manage contacts.
+                    This platform is our answer — an elegant and secure solution built for everyone.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                    <div class="p-6 rounded-xl bg-purple-100/60 dark:bg-gray-700/40 shadow-md">
+                        <h3 class="font-semibold text-xl mb-2">🌍 Simplicity</h3>
+                        <p>Designed with clean UI and minimal clicks to do maximum work.</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-pink-100/60 dark:bg-gray-700/40 shadow-md">
+                        <h3 class="font-semibold text-xl mb-2">🔐 Security</h3>
+                        <p>Your contact data is encrypted and handled with privacy in mind.</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-blue-100/60 dark:bg-gray-700/40 shadow-md">
+                        <h3 class="font-semibold text-xl mb-2">🚀 Performance</h3>
+                        <p>Fast, responsive, and works across all devices and screen sizes.</p>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <a href="/"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-full shadow-md transition-all duration-300 hover:scale-105">
+                        🔙 Go Back Home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script>console.log("About Page");</script>
 </body>
 
 </html>
