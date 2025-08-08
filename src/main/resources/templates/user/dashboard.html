@@ -2,29 +2,57 @@
 <html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title},~{::script})}">
 
 <head>
-    <title th:text="${loggedInUser.name} + '| Dashboard'">Home page</title>
+    <title th:text="${loggedInUser.name} + ' | Dashboard'">Dashboard</title>
 </head>
 
 <body>
     <div id="content">
 
-        user logged in sidebar
+        <!-- Sidebar if user is logged in -->
         <div th:if="${loggedInUser}">
-            <div th:replace="~{user/sidebar :: sidebar}">
-            </div>
+            <div th:replace="~{user/sidebar :: sidebar}"></div>
         </div>
 
-        <div class="sm:pl-64 pt-20 " style="height:1000px;">
-            <div class=" flex justify-center flex-col items-center">
-                <h1 class="text-5xl">Welcome to This Dashboard Page</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit..</p>
-                <h1>Kaisa hai bhai..........................................</h1>
+        <!-- Main Content -->
+        <div class="sm:pl-64 pt-20" style="min-height: 100vh;">
+            <div class="flex justify-center flex-col items-center px-4">
+
+                <h1 class="text-5xl font-bold mb-2 text-blue-700">Welcome to This Dashboard Page</h1>
+                <p class="text-gray-600 text-center mb-6">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                </p>
+
+                <h1 class="text-2xl font-semibold text-green-700 mb-6">Kaisa hai bhai? 😄</h1>
+
+                <!-- Birthday Section -->
+                <div class="birthday-section w-full max-w-2xl bg-gray-800 rounded-lg shadow p-6 border">
+                    <h2 class="text-2xl font-bold mb-4 text-indigo-600">🎉 Upcoming Birthdays</h2>
+
+                    <!-- No Birthdays -->
+                    <div th:if="${#lists.isEmpty(upcomingBirthdays)}">
+                        <p class="text-gray-500">No upcoming birthdays in the next 30 days.</p>
+                    </div>
+
+                    <!-- Show Birthdays -->
+                    <div th:if="${not #lists.isEmpty(upcomingBirthdays)}">
+                        <ul class="space-y-3">
+                            <li th:each="contact : ${upcomingBirthdays}" class="border p-3 rounded bg-gray-50">
+                                <span class="font-semibold text-lg text-blue-900" th:text="${contact.name}">Contact
+                                    Name</span>
+                                <span class="text-gray-600">—</span>
+                                <span class="text-sm text-purple-700 font-medium"
+                                    th:text="${#temporals.format(contact.birthday, 'dd MMMM')}">Birthdate</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+
     <script>
         console.log("Ye le ek aur Home ka script tag")
     </script>
 </body>
-
 </html>

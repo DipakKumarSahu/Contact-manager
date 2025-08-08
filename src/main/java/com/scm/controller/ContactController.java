@@ -1,5 +1,8 @@
 package com.scm.controller;
 
+import java.security.Principal;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -37,6 +40,8 @@ import jakarta.validation.Valid;
 @RequestMapping("/user/contacts")
 public class ContactController {
 
+    private final ApiController apiController;
+
     private final ContactRepo contactRepo;
 
     Logger logger = LoggerFactory.getLogger(ContactController.class);
@@ -50,8 +55,9 @@ public class ContactController {
     @Autowired
     private ImageService imageService;
 
-    ContactController(ContactRepo contactRepo) {
+    ContactController(ContactRepo contactRepo, ApiController apiController) {
         this.contactRepo = contactRepo;
+        this.apiController = apiController;
     }
 
     // Add Contacts page: handler
@@ -68,7 +74,6 @@ public class ContactController {
         // contactForm.setLinkedInLink("Mera linked in = www.linkedin.com");
 
         model.addAttribute("contactForm", contactForm);
-
         return "user/add_contact";
     }
 
@@ -99,7 +104,6 @@ public class ContactController {
         // process the contact picture
         logger.info("File information: {}", contactForm.getContactImage().getOriginalFilename());
 
-    
 
         Contact contact = new Contact();
         contact.setName(contactForm.getName());
@@ -111,6 +115,7 @@ public class ContactController {
         contact.setFavorite(contactForm.isFavorite());
         contact.setWebsiteLink(contactForm.getWebsiteLink());
         contact.setLinkedInLink(contactForm.getLinkedInLink());
+        contact.setBirthday(contactForm.getBirthday());                     //odd
 
         if(contactForm.getContactImage() != null && contactForm.getContactImage().isEmpty()){
                 // upload karne ka code
@@ -231,6 +236,7 @@ public class ContactController {
         contactForm.setFavorite(contact.isFavorite());
         contactForm.setWebsiteLink(contact.getWebsiteLink());
         contactForm.setLinkedInLink(contact.getLinkedInLink());
+        contactForm.setBirthday(contact.getBirthday()); //odd
         contactForm.setPicture(contact.getPicture());
 
         model.addAttribute("contactForm", contactForm);
@@ -257,6 +263,7 @@ public class ContactController {
         con.setFavorite(contactForm.isFavorite());
         con.setWebsiteLink(contactForm.getWebsiteLink());
         con.setLinkedInLink(contactForm.getLinkedInLink());
+        con.setBirthday(contactForm.getBirthday()); //odd
         // process image:
 
         if (contactForm.getContactImage() != null && !contactForm.getContactImage().isEmpty()) {
@@ -281,5 +288,7 @@ public class ContactController {
 
         return "redirect:/user/contacts/view/" + contactId;
     }
+
+   
 
 }

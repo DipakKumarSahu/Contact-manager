@@ -33,4 +33,20 @@ public interface ContactRepo extends JpaRepository <Contact,String> // isme Stri
 
     Page<Contact> findByUserAndPhoneNumberContaining(User user, String phonekeyword, Pageable pageable);
 
+    // @Query("SELECT c FROM Contact c WHERE FUNCTION('DAY', c.birthday) >= FUNCTION('DAY', CURRENT_DATE) " +
+    //         "AND FUNCTION('MONTH', c.birthday) = FUNCTION('MONTH', CURRENT_DATE) " +
+    //         "AND FUNCTION('DAY', c.birthday) <= FUNCTION('DAY', CURRENT_DATE) + 7 " +
+    //         "AND c.user.id = :userId")
+    // List<Contact> findUpcomingBirthdays(@Param("userId") Long userId);
+
+
+
+    // ContactRepo.java
+            @Query("SELECT c FROM Contact c WHERE c.user.id = :userId AND c.birthday IS NOT NULL AND FUNCTION('MONTH', c.birthday) = :month AND FUNCTION('DAY', c.birthday) BETWEEN :startDay AND :endDay")
+    List<Contact> findUpcomingBirthdays(
+            @Param("userId") String userId,
+            @Param("month") int month,
+            @Param("startDay") int startDay,
+            @Param("endDay") int endDay);
+
 }

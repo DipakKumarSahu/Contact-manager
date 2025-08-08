@@ -1,6 +1,7 @@
 package com.scm.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +40,10 @@ public interface ContactService
 
      //get Contacts by user
      Page<Contact> getByUser(User user, int page, int size, String sortField, String sortDirection);
+
+
+     // ContactService.java
+     List<Contact> getUpcomingBirthdays(User user);
 
      
 }

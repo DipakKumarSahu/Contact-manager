@@ -1,5 +1,6 @@
 package com.scm.services.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,6 +45,7 @@ public class ContactServiceImpl implements ContactService
        contactOld.setWebsiteLink(contact.getWebsiteLink());
        contactOld.setLinkedInLink(contact.getLinkedInLink());
        contactOld.setClodinaryImagePublicid(contact.getClodinaryImagePublicid());
+       contactOld.setBirthday(contact.getBirthday()); //odd
     //    contactOld.setLinks(contact.getLinks());
        
        return contactRepo.save(contactOld);
@@ -104,5 +106,57 @@ public class ContactServiceImpl implements ContactService
        var pageable = PageRequest.of(page, size, sort);
        return contactRepo.findByUserAndPhoneNumberContaining(user, phoneNumberKeyword, pageable);
     }
+
+    // ContactServiceImpl.java
+@Override
+public List<Contact> getUpcomingBirthdays(User user) {
+    LocalDate today = LocalDate.now();
+    LocalDate endDate = today.plusDays(7);
+
+    System.out.println("-------------------------------------------------------------------------------------------");
+    System.out.println("Today: " + today);
+    System.out.println("EndDate: " + endDate);
+
+    // System.out.println("Fetched birthdays: " + thisMonthBirthdays.size());
+
+    if (today.getMonth() == endDate.getMonth()) {
+        // same month
+        return contactRepo.findUpcomingBirthdays(
+            user.getUserId(),
+            today.getMonthValue(),
+            today.getDayOfMonth(),
+            endDate.getDayOfMonth()
+
+            
+        );
+    } else {
+        // month change ho gaya (e.g., Dec 30 to Jan 5), 2 calls merge karna hoga
+        List<Contact> thisMonthBirthdays = contactRepo.findUpcomingBirthdays(
+            user.getUserId(),
+            today.getMonthValue(),
+            today.getDayOfMonth(),
+            today.lengthOfMonth()
+        );
+
+        List<Contact> nextMonthBirthdays = contactRepo.findUpcomingBirthdays(
+            user.getUserId(),
+            endDate.getMonthValue(),
+            1,
+            endDate.getDayOfMonth()
+        );
+
+        
+        System.out.println("-------------------------------------------------------------------------------------------");
+        System.out.println("Today: " + today);
+        System.out.println("EndDate: " + endDate);
+
+        System.out.println("Fetched birthdays: " + thisMonthBirthdays.size());
+        thisMonthBirthdays.addAll(nextMonthBirthdays);
+        return thisMonthBirthdays;
+    }
+}
+
+
+   
     
 }

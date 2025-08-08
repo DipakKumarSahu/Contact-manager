@@ -1,5 +1,7 @@
 package com.scm.forms;
 
+import java.time.LocalDate;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.constraints.Email;
@@ -34,7 +36,8 @@ public class ContactForm {
     @Size(min = 5, message="Minimum 5 character is required")
     private String address;
 
-    
+    private LocalDate birthday;  // odd
+
     private String description;
 
 

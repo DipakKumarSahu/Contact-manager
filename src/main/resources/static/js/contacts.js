@@ -1,5 +1,5 @@
 console.log("Ram Ram bhai Saarene");
-const baseURL = "http://localhost:8080"
+const baseURL = "http://localhost:8080";
 
 // set the modal menu element
 const viewContactModal = document.getElementById("view_contact_modal");
@@ -37,13 +37,11 @@ function closeContactModal() {
   contactModal.hide();
 }
 
-async function loadContactData(id) { 
+async function loadContactData(id) {
   //function call to user data
   console.log(id);
   try {
-    const data = await (
-      await fetch(`${baseURL}/api/contacts/${id}`)
-    ).json();
+    const data = await (await fetch(`${baseURL}/api/contacts/${id}`)).json();
     console.log(data);
     console.log(data.name);
 
@@ -56,12 +54,13 @@ async function loadContactData(id) {
     document.querySelector("#contact_website").innerHTML = data.websiteLink;
     document.querySelector("#contact_website").href = data.websiteLink;
     document.querySelector("#contact_linkedin").innerHTML = data.linkedInLink;
-     document.querySelector("#contact_linkedin").href = data.linkedInLink;
-
+    document.querySelector("#contact_birthday").innerHTML = data.birthday;
+    // document.querySelector("#contact_linkedin").href = data.linkedInLink;
+    
     const contactFavorite = document.querySelector("#contact_favorite");
     if (data.favorite) {
       contactFavorite.innerHTML = "🧡 Favorite Contact";
-        // "<i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i>";
+      // "<i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i>";
     } else {
       contactFavorite.innerHTML = "Not Favorite Contact";
     }
@@ -72,21 +71,18 @@ async function loadContactData(id) {
   //`<img src="${data.picture}" alt="contact image" class="w-32 h-32 rounded-full">`
 }
 
-
 //delete contact
 async function deleteContact(id) {
-    Swal.fire({
-  title: "Do you want to Delete the contact ?",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonText: "Delete",
-}).then((result) => {
-  /* Read more about isConfirmed, isDenied below */
-  if (result.isConfirmed) {
-   const url = `${baseURL}/user/contacts/delete/` + id;
-   window.location.replace(url);
-  } 
-  
-});
+  Swal.fire({
+    title: "Do you want to Delete the contact ?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Delete",
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      const url = `${baseURL}/user/contacts/delete/` + id;
+      window.location.replace(url);
+    }
+  });
 }
-

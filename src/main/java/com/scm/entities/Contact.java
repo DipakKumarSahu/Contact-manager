@@ -1,7 +1,10 @@
 package com.scm.entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -39,6 +42,9 @@ public class Contact {
     private String linkedInLink;
     //private List<String> socialLink = new ArrayList<>();
     public String clodinaryImagePublicid;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd") //odd
+    private LocalDate birthday; // Add this line to include birthday        //odd
 
 
     @ManyToOne
