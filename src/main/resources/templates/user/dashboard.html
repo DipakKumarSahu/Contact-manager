@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title},~{::script})}">
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}" class="dark">
 
 <head>
     <title th:text="${loggedInUser.name} + ' | Dashboard'">Dashboard</title>
+    <script>
+        // Check saved theme on page load
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
 
-<body>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
     <div id="content">
 
         <!-- Sidebar if user is logged in -->
@@ -14,34 +22,52 @@
         </div>
 
         <!-- Main Content -->
-        <div class="sm:pl-64 pt-20" style="min-height: 100vh;">
-            <div class="flex justify-center flex-col items-center px-4">
+        <div class="sm:pl-64 pt-20 min-h-screen">
+            <div class="flex flex-col items-center px-4">
 
-                <h1 class="text-5xl font-bold mb-2 text-blue-700">Welcome to This Dashboard Page</h1>
-                <p class="text-gray-600 text-center mb-6">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              
+
+                <h1 class="text-5xl font-extrabold mb-2 text-blue-700 dark:text-blue-300 tracking-tight">
+                    Welcome, <span th:text="${loggedInUser.name}">User</span> 👋
+                </h1>
+                <!-- <p class="text-lg text-gray-600 dark:text-gray-400 text-center mb-6 max-w-xl">
+                    Organize. Remember. Celebrate. Your people, your way.
+                </p> -->
+                <p class="text-lg text-gray-600 dark:text-gray-400 text-center mb-6 max-w-xl">
+                    Your space to cherish connections, remember birthdays, and celebrate every story.
                 </p>
 
-                <h1 class="text-2xl font-semibold text-green-700 mb-6">Kaisa hai bhai? 😄</h1>
 
                 <!-- Birthday Section -->
-                <div class="birthday-section w-full max-w-2xl bg-gray-800 rounded-lg shadow p-6 border">
-                    <h2 class="text-2xl font-bold mb-4 text-indigo-600">🎉 Upcoming Birthdays</h2>
+                <div
+                    class="birthday-section w-full max-w-2xl bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-3xl">🎉</span>
+                        <h2 class="text-2xl font-bold text-indigo-700 dark:text-indigo-300">Upcoming Birthdays</h2>
+                    </div>
 
                     <!-- No Birthdays -->
-                    <div th:if="${#lists.isEmpty(upcomingBirthdays)}">
-                        <p class="text-gray-500">No upcoming birthdays in the next 30 days.</p>
+                    <div th:if="${#lists.isEmpty(upcomingBirthdays)}"
+                        class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center text-gray-500 dark:text-gray-300">
+                        <p>No upcoming birthdays in the next 30 days. 🎂</p>
                     </div>
 
                     <!-- Show Birthdays -->
                     <div th:if="${not #lists.isEmpty(upcomingBirthdays)}">
-                        <ul class="space-y-3">
-                            <li th:each="contact : ${upcomingBirthdays}" class="border p-3 rounded bg-gray-50">
-                                <span class="font-semibold text-lg text-blue-900" th:text="${contact.name}">Contact
-                                    Name</span>
-                                <span class="text-gray-600">—</span>
-                                <span class="text-sm text-purple-700 font-medium"
-                                    th:text="${#temporals.format(contact.birthday, 'dd MMMM')}">Birthdate</span>
+                        <ul class="space-y-4">
+                            <li th:each="contact : ${upcomingBirthdays}"
+                                class="flex items-center justify-between p-4 rounded-lg shadow-sm hover:shadow-md transition bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 border border-gray-200 dark:border-gray-700">
+
+                                <!-- Name & Birthday -->
+                                <div>
+                                    <span class="block font-semibold text-lg text-blue-900 dark:text-blue-200"
+                                        th:text="${contact.name}">Contact Name</span>
+                                    <span class="text-sm text-purple-700 dark:text-purple-300 font-medium"
+                                        th:text="${#temporals.format(contact.birthday, 'dd MMMM')}">Birthdate</span>
+                                </div>
+
+                                <!-- 🎂 Icon -->
+                                <div class="text-2xl">🎂</div>
                             </li>
                         </ul>
                     </div>
@@ -51,8 +77,7 @@
         </div>
     </div>
 
-    <script>
-        console.log("Ye le ek aur Home ka script tag")
-    </script>
+    
 </body>
+
 </html>
