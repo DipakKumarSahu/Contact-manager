@@ -92,7 +92,7 @@
                 <!-- birthday -->
 
                 <div class="mb-3">
-                  <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Email</label>
+                  <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Birthday</label>
                   <div class="relative mb-1">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                       <i class="fa-solid fa-cake-candles w-4 h-4 text-gray-500 dark:text-gray-300"></i>
@@ -102,7 +102,7 @@
                       placeholder="example@gmail.com" />
                   </div>
                   <p class="text-red-500" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}">
-                    Invalid Email
+                    Invalid BIrthday
                   </p>
                 </div>
 

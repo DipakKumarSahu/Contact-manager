@@ -46,7 +46,7 @@ public class UserController {
         
         System.out.println("-------------------------------------------------------------");
         logger.info("Upcoming Birthdays: {}", upcomingBirthdays);
-        model.addAttribute("upcomingBirthdays", upcomingBirthdays);
+        model.addAttribute("upcomingBirthdays", upcomingBirthdays); 
         model.addAttribute("title", "Upcoming Birthdays");
 
         return "user/dashboard"; // Thymeleaf page
