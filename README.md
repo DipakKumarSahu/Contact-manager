@@ -98,22 +98,41 @@ Feel free to reach out if you want me to help with generating badges, screenshot
 
 ## 📸 Screenshots
 > _(Add screenshots here for login, dashboard, contact management, and birthday reminders)_
+![home light](https://github.com/user-attachments/assets/6143d570-6a88-4478-81f1-2a4d35ea61f0)
+> ![home dark](https://github.com/user-attachments/assets/3d660c8d-38db-4431-9594-6b554640d9e5)
+
+About Page
+> ![About light 1](https://github.com/user-attachments/assets/9c076e00-2774-4f1b-8de2-0c2e139c8382)
+> ![About light 2](https://github.com/user-attachments/assets/686af5dd-e920-4459-a9f1-c5f7f3188c6d)
+
+Service Page
+>![service light 1](https://github.com/user-attachments/assets/b8230c7c-bae1-4dcb-82c6-475ac1c6c3f1)
+>![service light 2](https://github.com/user-attachments/assets/fb4dd5c4-4e99-442b-9ef8-1f18129d1e7f)
+
+Sign Up Page
+> ![signup light](https://github.com/user-attachments/assets/1ae628d6-aa24-4f72-9dc7-b6c7a1d050ef)
+> ![signup dark](https://github.com/user-attachments/assets/53c7c552-d74f-4383-a307-7ebb163fbbc1)
+> ![signup with oauth](https://github.com/user-attachments/assets/77d5a5d1-f089-4d42-b6ec-6251d95d2950)
+
+Email Verification
+>![verficartion link send to email](https://github.com/user-attachments/assets/29e27826-0d9c-4ada-afbb-fbf353df2b6f)
+
+Login Page
+>![Login page](https://github.com/user-attachments/assets/80ac8816-46e1-4b23-9794-cb3606745d70)
+
+User Profile Page
+>![profile](https://github.com/user-attachments/assets/7c950b3f-0690-4eaa-bcb4-ced9a908ce51)
+
+User Add new Contact
+>![add new contact](https://github.com/user-attachments/assets/be148d17-643c-4b89-9e34-180dd617c61f)
+>![add new contact 2](https://github.com/user-attachments/assets/e488e9c6-13e6-45c0-b72a-3642ba0e5bf3)
+
+All Contacts
+>![all your contacts](https://github.com/user-attachments/assets/3496a771-bfae-45fc-9490-c98e0afc8921)
+
+Upcoming Birthdays
+>![upcomiing birthdays](https://github.com/user-attachments/assets/707dce57-33ee-4d81-b8b5-0223519c11cc)
+
 
 ---
 
-## ⚡ Installation & Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/smart-contact-manager.git
-
-# Navigate into the project folder
-cd smart-contact-manager
-
-# Configure database in application.properties
-spring.datasource.url=jdbc:mysql://localhost:3306/scm
-spring.datasource.username=yourusername
-spring.datasource.password=yourpassword
-
-# Run the application
-mvn spring-boot:run
