@@ -41,7 +41,7 @@ public class User implements UserDetails {
     @Column(name = "username", nullable = false)
 
     private String name;
-    @Column(nullable = false, unique = true)
+    // @Column(nullable = false, unique = true)
     private String email;
     @Getter(AccessLevel.NONE)
     private String password;

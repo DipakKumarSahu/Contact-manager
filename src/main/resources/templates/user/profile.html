@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title},~{::script})}">
 <head>
-    <title th:text="${loggedInUser.name} + '| SCM'">Home page</title>
+    <title th:text="${loggedInUser.name} + ' Profile'">Home page</title>
 </head>
 <body>
     <div id="content">
@@ -46,10 +46,13 @@
                             <span class="font-medium text-gray-700 w-auto dark:text-gray-500">Email Verified:</span>
                             <span id="emailVerified" class="ml-auto px-2 py-1 rounded-full dark:text-gray-400" th:text="${loggedInUser.emailVerified?'Yes':'No'}">...</span>
                         </div>
-                        <div class="flex items-center justify-around">
+
+                        
+                    
+                        <!-- <div class="flex items-center justify-around">
                             <span class="font-medium text-gray-700 w-auto dark:text-gray-500">Phone Verified:</span>
                             <span id="phoneVerified" class="ml-auto px-2 py-1 rounded-full dark:text-gray-400 " th:text="${loggedInUser.phoneVerified ? 'Yes' : 'No'}">...</span>
-                        </div>
+                        </div> -->
                         <!-- <div class="flex items-center">
                             <span class="font-medium text-gray-700 w-24 dark:text-gray-500">User ID:</span>
                             <span id="userId" class="ml-auto text-gray-600 dark:text-gray-400" th:text="${loggedInUser.UserId}">...</span>
