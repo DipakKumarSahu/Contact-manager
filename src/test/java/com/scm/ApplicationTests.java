@@ -16,14 +16,14 @@ class ApplicationTests {
 	void contextLoads() {
 	}
 
+// For Email Testing
+// @Autowired
+// private EmailService service;
 
-@Autowired
-private EmailService service;
-
-@Test
-void testSendEmail() {
-    service.sendEmail("dipu958@outlook.com", "Test Subject", "Arrey Bhai Kesa hai tu");
-}
+// @Test
+// void testSendEmail() {
+//     service.sendEmail("mail", "Test Subject", "Test Body");
+// }
 
 }
 
