@@ -97,9 +97,9 @@ Feel free to reach out if you want me to help with generating badges, screenshot
 ---
 
 ## 📸 Screenshots
-> _(Add screenshots here for login, dashboard, contact management, and birthday reminders)_
-![home light](https://github.com/user-attachments/assets/6143d570-6a88-4478-81f1-2a4d35ea61f0)
-> ![home dark](https://github.com/user-attachments/assets/3d660c8d-38db-4431-9594-6b554640d9e5)
+>![home light](https://github.com/user-attachments/assets/9b22d047-cd25-4941-8d0d-c71625ab3697)
+>![home dark](https://github.com/user-attachments/assets/5c60ce25-5e3e-468e-8f58-43be31333ef2)
+
 
 About Page
 > ![About light 1](https://github.com/user-attachments/assets/9c076e00-2774-4f1b-8de2-0c2e139c8382)
