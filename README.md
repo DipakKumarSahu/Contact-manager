@@ -3,7 +3,7 @@
 PeopleVault is a modern, secure, and cloud-powered contact management application built with Spring Boot. Designed to help users effortlessly organize, store, and manage contacts, PeopleVault offers a feature-rich experience combining ease of use with powerful integrations such as OAuth2 login, email verification, cloud image hosting, birthday reminders, and data export. Whether you’re managing personal contacts or running a small CRM, PeopleVault provides the tools you need to stay connected and productive.
 
 ---
-
+  
 ## 🚀 Features
 
 ### 🔐 Secure Authentication
